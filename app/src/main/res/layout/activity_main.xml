@@ -6,62 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <LinearLayout
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <ListView
+        android:id="@+id/lvListar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="CADASTRO ALUNO"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/edtNome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="NOME"
-            android:inputType="text"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/edtCpf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="CPF"
-            android:inputType="text"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/edtTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="TEL:"
-            android:inputType="text"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/btnGravar"
-            android:onClick="Gravar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#090909"
-            android:text="GRAVAR"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/edtListar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

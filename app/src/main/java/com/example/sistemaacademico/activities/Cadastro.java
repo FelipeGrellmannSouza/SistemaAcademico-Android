@@ -2,6 +2,7 @@ package com.example.sistemaacademico.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,6 @@ public class Cadastro extends AppCompatActivity {
 
 
     private EditText edtNome, edtCpf, edtTelefone, edtListar;
-    private Button btnGravar;
 
 
     @Override
@@ -31,8 +31,6 @@ public class Cadastro extends AppCompatActivity {
         edtNome = findViewById(R.id.edtNome);
         edtCpf = findViewById(R.id.edtCpf);
         edtTelefone = findViewById(R.id.edtTelefone);
-        edtListar = findViewById(R.id.edtListar);
-        btnGravar = findViewById(R.id.btnGravar);
     }
 
     public void Gravar(View view){
@@ -45,22 +43,13 @@ public class Cadastro extends AppCompatActivity {
         AlunoDAO dao = new AlunoDAO(this);
         long id = dao.insert(a);
         Toast.makeText(this, "Aluno inserido com o ID " + id, Toast.LENGTH_SHORT).show();
-        listar();
+        home();
     }
 
-    private void listar() {
-        List<Aluno> alunos = new ArrayList<Aluno>();
-        AlunoDAO dao = new AlunoDAO(this);
-        alunos = dao.obterTodos();
-        for (Aluno aluno : alunos){
-            edtListar.append("ID : " + aluno.getId() + "\n");
-            edtListar.append("Nome : " + aluno.getNome() + "\n");
-            edtListar.append("CPF : " + aluno.getCpf() + "\n");
-            edtListar.append("Telefone : " + aluno.getTelefone() + "\n");
-        }
-
-
+    private void home(){
+        Intent intent = new Intent(Cadastro.this, MainActivity.class);
+        finish();
+        startActivity(intent);
     }
-
 
 }
