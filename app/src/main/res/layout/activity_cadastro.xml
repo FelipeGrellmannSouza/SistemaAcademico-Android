@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.Cadastro">
+    tools:context=".activities.CadastroActivity">
 
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/edtNome"
+            android:id="@+id/editNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -30,7 +30,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/edtCpf"
+            android:id="@+id/editCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -39,7 +39,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/edtTelefone"
+            android:id="@+id/editTelefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,10 +12,7 @@ import com.example.sistemaacademico.R;
 import com.example.sistemaacademico.dao.AlunoDAO;
 import com.example.sistemaacademico.model.Aluno;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Cadastro extends AppCompatActivity {
+public class CadastroActivity extends AppCompatActivity {
 
 
     private EditText edtNome, edtCpf, edtTelefone, edtListar;
@@ -28,9 +24,9 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
 
-        edtNome = findViewById(R.id.edtNome);
-        edtCpf = findViewById(R.id.edtCpf);
-        edtTelefone = findViewById(R.id.edtTelefone);
+        edtNome = findViewById(R.id.editNome);
+        edtCpf = findViewById(R.id.editCpf);
+        edtTelefone = findViewById(R.id.editTelefone);
     }
 
     public void Gravar(View view){
@@ -46,7 +42,7 @@ public class Cadastro extends AppCompatActivity {
     }
 
     private void home(){
-        Intent intent = new Intent(Cadastro.this, MainActivity.class);
+        Intent intent = new Intent(CadastroActivity.this, MainActivity.class);
         finish();
         startActivity(intent);
     }

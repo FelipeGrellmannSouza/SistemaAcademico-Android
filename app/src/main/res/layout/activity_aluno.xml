@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AlunoActivity">
+
+    <ImageView
+        android:id="@+id/imgUserIcon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/usericon" />
+
+    <TextView
+        android:id="@+id/textoID"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="32dp"
+        android:text="ID: "
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgUserIcon" />
+
+
+    <EditText
+        android:id="@+id/editId"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="-30dp"
+        android:editable="false"
+        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
+        app:layout_constraintTop_toTopOf="@+id/textoID" />
+
+    <TextView
+        android:id="@+id/textoNome"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="104dp"
+        android:gravity="center"
+        android:text="Nome"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoID" />
+
+    <EditText
+        android:id="@+id/editNome"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="-30dp"
+        android:editable="false"
+        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
+        app:layout_constraintTop_toTopOf="@+id/textoNome" />
+
+    <TextView
+        android:id="@+id/textoCpf"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="104dp"
+        android:gravity="center"
+        android:text="CPF: "
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoNome" />
+
+    <EditText
+        android:id="@+id/editCpf"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="-30dp"
+        android:editable="false"
+        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
+        app:layout_constraintTop_toTopOf="@+id/textoCpf" />
+
+    <TextView
+        android:id="@+id/textoTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="104dp"
+        android:gravity="center"
+        android:text="Telefone: "
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoCpf" />
+
+    <EditText
+        android:id="@+id/editTelefone"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="-30dp"
+        android:editable="false"
+        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
+        app:layout_constraintTop_toTopOf="@+id/textoTelefone" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

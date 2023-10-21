@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -41,7 +44,23 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<Aluno> adapter = new ArrayAdapter<Aluno>(this, android.R.layout.simple_list_item_1, alunosFiltrados);
         lvListar.setAdapter(adapter);
 
+        //Clickar na lista
+        lvListar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, AlunoActivity.class);
+                intent.putExtra("Id",alunos.get(i).getId());
+                startActivity(intent);
+
+                Toast.makeText(MainActivity.this, "ID: " + alunos.get(i).getId(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
+
+
+
     //método para mecher no menu
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater i = getMenuInflater();
@@ -55,15 +74,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                // s = texto escrito na barra de pesquisa
                 procurarAlunos(s);
                 return false;
             }
         });
-
-
         return true;
     }
 
+
+
+    //Procura Alunos pelo Nome
     private void procurarAlunos(String nome) {
         alunosFiltrados.clear();
         for (Aluno a : alunos){
@@ -79,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
     public void Cadastrar(MenuItem item){
-        Intent intent = new Intent(MainActivity.this, Cadastro.class);
+        Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
         startActivity(intent);
     }
     @Override
@@ -90,5 +111,4 @@ public class MainActivity extends AppCompatActivity {
         alunosFiltrados.addAll(alunos);
         lvListar.invalidateViews();
     }
-
 }

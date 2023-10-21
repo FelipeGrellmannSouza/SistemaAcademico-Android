@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.sistemaacademico.model.Aluno;
 import com.example.sistemaacademico.util.ConnectionFactory;
@@ -77,6 +78,9 @@ public class AlunoDAO {
             aluno.setNome((cursor.getString(1)));
             aluno.setCpf((cursor.getString(2)));
             aluno.setTelefone((cursor.getString(3)));
+            Log.d("AlunoDAO", "Aluno encontrado: " + aluno.getNome());
+        }else {
+            Log.d("AlunoDAO", "Aluno não encontrado para o ID: " + id);
         }
         return aluno;
     }
