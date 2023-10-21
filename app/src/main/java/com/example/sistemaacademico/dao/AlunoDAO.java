@@ -14,6 +14,8 @@ import java.util.List;
 public class AlunoDAO {
     private ConnectionFactory conexao;
     private SQLiteDatabase banco;
+
+
     public AlunoDAO(Context context){
         //ConnectionFactory com o banco de dados
         conexao = new ConnectionFactory(context);
@@ -51,7 +53,6 @@ public class AlunoDAO {
         List<Aluno> alunos = new ArrayList<>();
         Cursor cursor = banco.query("aluno", new String[]{"id", "nome", "cpf", "telefone"},
                 null, null, null, null, null);
-
         while (cursor.moveToNext()){
             Aluno a = new Aluno();
             a.setId(cursor.getInt(0));
@@ -63,19 +64,23 @@ public class AlunoDAO {
         return alunos;
     }
 
-    public Aluno read(Integer id){
+
+    //Procura Alunos pelo id
+    public Aluno read(Integer id) {
         String args[] = {String.valueOf(id)};
-        Cursor cursor = banco.query("aluno", new String[]{"id","nome","cpf","telefone"},
-                "id=?", args, null, null, null, null);
+        Cursor cursor = banco.query("aluno", new String[]{"id", "nome", "cpf", "telefone"},
+                "id=?", args, null, null, null);
         cursor.moveToFirst();
         Aluno aluno = new Aluno();
-        if (cursor.getCount() > 0){
+        if(cursor.getCount() > 0){
             aluno.setId(cursor.getInt(0));
-            aluno.setNome(cursor.getString(1));
-            aluno.setCpf(cursor.getString(2));
-            aluno.setTelefone(cursor.getString(3));
+            aluno.setNome((cursor.getString(1)));
+            aluno.setCpf((cursor.getString(2)));
+            aluno.setTelefone((cursor.getString(3)));
         }
-
         return aluno;
     }
+
+
+
 }

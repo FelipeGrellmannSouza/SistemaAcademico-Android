@@ -39,7 +39,6 @@ public class Cadastro extends AppCompatActivity {
         a.setCpf(edtCpf.getText().toString());
         a.setTelefone(edtTelefone.getText().toString());
 
-
         AlunoDAO dao = new AlunoDAO(this);
         long id = dao.insert(a);
         Toast.makeText(this, "Aluno inserido com o ID " + id, Toast.LENGTH_SHORT).show();
