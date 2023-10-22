@@ -49,10 +49,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, AlunoActivity.class);
-                intent.putExtra("Id",alunos.get(i).getId());
+                intent.putExtra("Id",alunosFiltrados.get(i).getId());
                 startActivity(intent);
-
-                Toast.makeText(MainActivity.this, "ID: " + alunos.get(i).getId(), Toast.LENGTH_SHORT).show();
             }
         });
 
