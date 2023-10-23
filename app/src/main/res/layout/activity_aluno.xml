@@ -6,103 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".activities.AlunoActivity">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Visualizar Aluno"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <ImageView
         android:id="@+id/imgUserIcon"
         android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="76dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/usericon" />
 
     <EditText
         android:id="@+id/editCpf"
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="-30dp"
+        android:layout_marginStart="56dp"
         app:layout_constraintBottom_toBottomOf="@+id/textoCpf"
-        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
+        app:layout_constraintStart_toEndOf="@+id/textoCpf"
         app:layout_constraintTop_toTopOf="@+id/textoCpf"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editId"
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="-30dp"
+        android:layout_marginStart="72dp"
         android:enabled="false"
         app:layout_constraintBottom_toBottomOf="@+id/textoID"
-        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
-        app:layout_constraintTop_toTopOf="@+id/textoID" />
+        app:layout_constraintStart_toEndOf="@+id/textoID"
+        app:layout_constraintTop_toTopOf="@+id/textoID"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textoCpf"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="CPF: "
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/editCpf"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textoNome" />
 
     <TextView
         android:id="@+id/textoTelefone"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Telefone: "
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTelefone"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textoCpf" />
 
     <TextView
         android:id="@+id/textoNome"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Nome"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/editNome"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textoID" />
 
     <EditText
         android:id="@+id/editTelefone"
         android:layout_width="140dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="-30dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textoTelefone"
-        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
+        app:layout_constraintStart_toEndOf="@+id/textoTelefone"
         app:layout_constraintTop_toTopOf="@+id/textoTelefone"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editNome"
-        android:layout_width="140dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="-30dp"
+        android:layout_marginStart="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textoNome"
-        app:layout_constraintEnd_toEndOf="@+id/imgUserIcon"
+        app:layout_constraintStart_toEndOf="@+id/textoNome"
         app:layout_constraintTop_toTopOf="@+id/textoNome"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textoID"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:text="ID: "
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/editId"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgUserIcon" />
 
     <Button
@@ -131,14 +144,14 @@
 
     <Button
         android:id="@+id/btnAtualizar2"
-        android:text="Atualizar"
-        android:onClick="atualizarAluno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="60dp"
+        android:onClick="atualizarAluno"
+        android:text="Atualizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 
