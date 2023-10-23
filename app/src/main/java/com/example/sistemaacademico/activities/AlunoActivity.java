@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,19 +22,20 @@ public class AlunoActivity extends AppCompatActivity {
     Aluno aluno;
     EditText edtID, edtNome, edtCpf, edtTelefone;
     Button btnExcluir, btnAtualizar, btnAtualizar2;
+    private String ultimoCaractereDigitado = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aluno);
-
         iniciandoCoponentes();
-
         dao = new AlunoDAO(this);
-
         RecuperandoAluno();
 
+        mascaraTelefone();
+        mascaraCpf();
     }
+
     private void iniciandoCoponentes(){
         edtID = findViewById(R.id.editId);
         edtNome = findViewById(R.id.editNome);
@@ -41,10 +44,8 @@ public class AlunoActivity extends AppCompatActivity {
         btnAtualizar = findViewById(R.id.btnAtualizar);
         btnExcluir = findViewById(R.id.btnExcluir);
         btnAtualizar2 = findViewById(R.id.btnAtualizar2);
-
         edtNaoEditaveis();
     }
-
 
     private void RecuperandoAluno(){
         Intent intent = getIntent();
@@ -85,16 +86,37 @@ public class AlunoActivity extends AppCompatActivity {
         alerta.show();
     }
 
+    private void validarDados(){
+        Integer carateresTelefone = edtTelefone.getText().toString().length();
+        Integer caracteresCpf = edtCpf.getText().toString().length();
+        String nome = edtNome.getText().toString();
+
+        //Validação dos dados
+        if (!nome.isEmpty()){
+            if (caracteresCpf == 14){
+                if (carateresTelefone == 13){
+                    //Atualiza o aluno
+                    aluno.setNome(edtNome.getText().toString());
+                    aluno.setCpf(edtCpf.getText().toString());
+                    aluno.setTelefone(edtTelefone.getText().toString());
+
+                    dao.update(aluno);
+                    Toast.makeText(this, "Aluno atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                    finish();
+                }else {
+                    Toast.makeText(this, "Digite um Telefone Valido ", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(this, "Digite um CPF Valido", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(this, "Digite um Nome", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
     public void atualizarAluno(View view){
-        aluno.setNome(edtNome.getText().toString());
-        aluno.setCpf(edtCpf.getText().toString());
-        aluno.setTelefone(edtTelefone.getText().toString());
-
-        dao.update(aluno);
-        Toast.makeText(this, "Aluno atualizado com sucesso", Toast.LENGTH_SHORT).show();
-        finish();
+        validarDados();
     }
 
     public void prepAtualizar(View view){
@@ -112,6 +134,78 @@ public class AlunoActivity extends AppCompatActivity {
         edtCpf.setEnabled(false);
         edtTelefone.setEnabled(false);
         btnAtualizar2.setVisibility(View.GONE);
+    }
+
+
+    //mascara para a formatação do texto do Telefone. Deixa no padrão (11 11111-1111)
+    private void mascaraTelefone(){
+        edtTelefone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer tamanhoEdtTelefone = edtTelefone.getText().toString().length();
+                if(tamanhoEdtTelefone > 1 ){
+                    ultimoCaractereDigitado = edtTelefone.getText().toString().substring(tamanhoEdtTelefone-1);
+                }
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer tamanhoEdtTelefone = edtTelefone.getText().toString().length();
+                if(tamanhoEdtTelefone == 2){
+                    if(!ultimoCaractereDigitado.equals(" ")){
+                        edtTelefone.append(" ");
+                    }else{
+                        edtTelefone.getText().delete(tamanhoEdtTelefone - 1, tamanhoEdtTelefone);
+                    }
+                }else if (tamanhoEdtTelefone == 8){
+                    if(!ultimoCaractereDigitado.equals("-")){
+                        edtTelefone.append("-");
+                    }else{
+                        edtTelefone.getText().delete(tamanhoEdtTelefone - 1, tamanhoEdtTelefone);
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
+    }
+
+    //mascara para a formatação do texto do cpf. Deixa no padrão (111.111.111-11)
+    private void mascaraCpf(){
+        edtCpf.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer tamanhoEdtCpf = edtCpf.getText().toString().length();
+                if(tamanhoEdtCpf > 1 ){
+                    ultimoCaractereDigitado = edtCpf.getText().toString().substring(tamanhoEdtCpf-1);
+                }
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Integer tamanhoEdtCpf = edtCpf.getText().toString().length();
+                if(tamanhoEdtCpf == 3){
+                    if(!ultimoCaractereDigitado.equals(".")){
+                        edtCpf.append(".");
+                    }else{
+                        edtCpf.getText().delete(tamanhoEdtCpf - 1, tamanhoEdtCpf);
+                    }
+                }else if (tamanhoEdtCpf == 7){
+                    if(!ultimoCaractereDigitado.equals(".")){
+                        edtCpf.append(".");
+                    }else{
+                        edtCpf.getText().delete(tamanhoEdtCpf - 1, tamanhoEdtCpf);
+                    }
+                } else if (tamanhoEdtCpf == 11) {
+                    if(!ultimoCaractereDigitado.equals("-")){
+                        edtCpf.append("-");
+                    }else{
+                        edtCpf.getText().delete(tamanhoEdtCpf - 1, tamanhoEdtCpf);
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
     }
 
 

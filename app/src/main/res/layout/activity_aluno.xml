@@ -31,9 +31,10 @@
 
     <EditText
         android:id="@+id/editCpf"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginStart="56dp"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/textoCpf"
         app:layout_constraintStart_toEndOf="@+id/textoCpf"
         app:layout_constraintTop_toTopOf="@+id/textoCpf"
@@ -41,7 +42,7 @@
 
     <EditText
         android:id="@+id/editId"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginStart="72dp"
         android:enabled="false"
@@ -88,7 +89,8 @@
 
     <EditText
         android:id="@+id/editTelefone"
-        android:layout_width="140dp"
+        android:inputType="text"
+        android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textoTelefone"
@@ -98,9 +100,10 @@
 
     <EditText
         android:id="@+id/editNome"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="48dp"
         android:layout_marginStart="48dp"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/textoNome"
         app:layout_constraintStart_toEndOf="@+id/textoNome"
         app:layout_constraintTop_toTopOf="@+id/textoNome"
